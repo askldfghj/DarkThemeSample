@@ -16,4 +16,6 @@
 
     <color name="toolBarColor">@color/colorContents</color>
     <color name="textColor">#FFFFFF</color>
+
+    <color name="bottomMenuBackGroundColor">@color/colorContents</color>
 </resources>

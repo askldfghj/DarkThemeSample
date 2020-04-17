@@ -21,4 +21,8 @@
     <color name="toolBarColor">@color/colorPrimary</color>
     <color name="toolBarTextColor">#FFFFFF</color>
     <color name="textColor">#424242</color>
+
+    <color name="bottomMenuColorActivated">@color/colorPrimary</color>
+    <color name="bottomMenuColorInActivated">@color/textColor</color>
+    <color name="bottomMenuBackGroundColor">@color/colorBackground</color>
 </resources>
