@@ -1,11 +1,17 @@
-package com.askldfghj.darkthemesample
+package com.askldfghj.darkthemesample.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
+import com.askldfghj.darkthemesample.R
 import com.askldfghj.darkthemesample.databinding.ActivityMainBinding
+import com.askldfghj.darkthemesample.ui.home.HomeFragment
+import com.askldfghj.darkthemesample.ui.list.ListFragment
+import com.askldfghj.darkthemesample.ui.setting.SettingFragment
 import com.debug.util.debugLog
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +19,17 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         debugLog { "onCreate" }
         super.onCreate(savedInstanceState)
-        DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main).also {
+        DataBindingUtil.setContentView<ActivityMainBinding>(this,
+            R.layout.activity_main
+        ).also { binding ->
+            binding.bottomNavigation.setOnNavigationItemSelectedListener {
+                getNavigationItemSelectedListener(it)
+                true
+            }
 
+            if (savedInstanceState == null) {
+                binding.bottomNavigation.selectedItemId = R.id.bottom_home
+            }
         }
     }
 
@@ -81,5 +96,23 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         debugLog { "onDestroy" }
         super.onDestroy()
+    }
+
+    private fun getNavigationItemSelectedListener(menuItem: MenuItem) {
+        when (menuItem.itemId) {
+            R.id.bottom_home -> {
+                switchToFragment(HomeFragment.newInstance())
+            }
+            R.id.bottom_list -> {
+                switchToFragment(ListFragment.newInstance())
+            }
+            R.id.bottom_setting -> {
+                switchToFragment(SettingFragment.newInstance())
+            }
+        }
+    }
+
+    private fun switchToFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit()
     }
 }
