@@ -18,4 +18,6 @@
     <color name="textColor">#FFFFFF</color>
 
     <color name="bottomMenuBackGroundColor">@color/colorContents</color>
+
+    <color name="modeIconColor">#2196F3</color>
 </resources>

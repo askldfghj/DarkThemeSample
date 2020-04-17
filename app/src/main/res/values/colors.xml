@@ -25,4 +25,6 @@
     <color name="bottomMenuColorActivated">@color/colorPrimary</color>
     <color name="bottomMenuColorInActivated">@color/textColor</color>
     <color name="bottomMenuBackGroundColor">@color/colorBackground</color>
+
+    <color name="modeIconColor">#FF9800</color>
 </resources>
