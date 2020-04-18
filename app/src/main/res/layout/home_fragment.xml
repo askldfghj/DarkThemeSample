@@ -13,8 +13,8 @@
 
         <ImageView
             android:id="@+id/mode_icon"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/ic_mode"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,11 +36,22 @@
             android:text="@string/home_hello"
             android:textColor="@color/textColor"
             android:textSize="@dimen/text_size_20sp"
-            android:textStyle="bold"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/mode_icon"
             app:layout_constraintVertical_bias="0.35"
+            />
+
+        <TextView
+            android:id="@+id/current_theme_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/home_current_theme"
+            android:textColor="@color/textColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hello_text"
             />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

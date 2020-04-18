@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_hello">Hello!\nThis is a sample of the Dark Theme.</string>
+
+    <string name="home_current_theme">Current Theme is Dark Theme</string>
+</resources>

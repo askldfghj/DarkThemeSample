@@ -1,10 +1,15 @@
 package com.askldfghj.darkthemesample.ui.main
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.askldfghj.darkthemesample.R
@@ -19,6 +24,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         debugLog { "onCreate" }
         super.onCreate(savedInstanceState)
+        // test
+        val mode = getSharedPreferences("pref", Context.MODE_PRIVATE).getInt("mode", MODE_NIGHT_FOLLOW_SYSTEM)
+        AppCompatDelegate.setDefaultNightMode(mode)
+
         DataBindingUtil.setContentView<ActivityMainBinding>(this,
             R.layout.activity_main
         ).also { binding ->

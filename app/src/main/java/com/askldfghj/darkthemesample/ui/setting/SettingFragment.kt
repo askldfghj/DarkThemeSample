@@ -5,6 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO
+import androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES
 import androidx.fragment.app.Fragment
 import com.askldfghj.darkthemesample.R
 import com.askldfghj.darkthemesample.databinding.SettingFragmentBinding
@@ -15,7 +19,27 @@ class SettingFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         debugLog { "onCreateView" }
-        return bindingAndInflate<SettingFragmentBinding>(R.layout.setting_fragment, container) {
+        return bindingAndInflate<SettingFragmentBinding>(R.layout.setting_fragment, container) { binding ->
+            val mode = context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.getInt("mode",
+                MODE_NIGHT_FOLLOW_SYSTEM
+            )
+
+            when (mode) {
+                MODE_NIGHT_FOLLOW_SYSTEM -> {
+                    binding.systemBtn.isChecked = true
+                }
+                MODE_NIGHT_NO -> {
+                    binding.lightThemeBtn.isChecked = true
+                }
+                MODE_NIGHT_YES -> {
+                    binding.darkThemeBtn.isChecked = true
+                }
+            }
+
+            binding.themeSelectGroup.setOnCheckedChangeListener { radioGroup, i ->
+                val view = radioGroup.findViewById<View>(i)
+                setCurrentTheme(radioGroup.indexOfChild(view))
+            }
         }
     }
 
@@ -73,5 +97,32 @@ class SettingFragment : Fragment() {
         fun newInstance() = SettingFragment().also {
             it.arguments = Bundle()
         }
+    }
+
+    private fun setCurrentTheme(index: Int) {
+        val mode = when (index) {
+            0 -> {
+                saveModeInPref(MODE_NIGHT_FOLLOW_SYSTEM)
+                MODE_NIGHT_FOLLOW_SYSTEM
+            }
+            1 -> {
+                saveModeInPref(MODE_NIGHT_NO)
+                MODE_NIGHT_NO
+            }
+            2 -> {
+                saveModeInPref(MODE_NIGHT_YES)
+                MODE_NIGHT_YES
+            }
+            else -> {
+                context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.getInt("mode",
+                    MODE_NIGHT_FOLLOW_SYSTEM
+                ) ?: MODE_NIGHT_FOLLOW_SYSTEM
+            }
+        }
+        AppCompatDelegate.setDefaultNightMode(mode)
+    }
+
+    private fun saveModeInPref(mode: Int) {
+        context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.edit()?.putInt("mode", mode)?.apply()
     }
 }

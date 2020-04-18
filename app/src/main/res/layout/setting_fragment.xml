@@ -12,15 +12,69 @@
         >
 
         <TextView
+            android:id="@+id/forced_theme_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SettingFragment"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="15dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:visibility="visible"
+            android:text="@string/setting_forced_theme"
             android:textColor="@color/textColor"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             />
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/is_forced_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/forced_theme_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/forced_theme_text"
+            />
+
+        <RadioGroup
+            android:id="@+id/theme_select_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/forced_theme_text"
+            >
+
+            <RadioButton
+                android:id="@+id/system_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Follow System"
+                android:textColor="@color/textColor"
+                />
+
+            <RadioButton
+                android:layout_marginTop="10dp"
+                android:id="@+id/light_theme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/setting_light_theme"
+                android:textColor="@color/textColor"
+                />
+
+            <RadioButton
+                android:id="@+id/dark_theme_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/setting_dark_theme"
+                android:textColor="@color/textColor"
+                />
+        </RadioGroup>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
