@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">DayNightThemeSample</string>
+    <string name="app_name">DarkModeThemeSample</string>
 
     <string name="bottom_menu_home">HOME</string>
     <string name="bottom_menu_list">LIST</string>
     <string name="bottom_menu_setting">SETTING</string>
 
-    <string name="home_hello">Hello!\nThis is a sample of the DayNight Theme.</string>
+    <string name="home_hello">Hello!\nThis is a sample of the Dark Theme.</string>
     <string name="home_current_theme">Current Theme is Light Theme</string>
 
     <string name="setting_forced_theme">Forced Theme</string>
